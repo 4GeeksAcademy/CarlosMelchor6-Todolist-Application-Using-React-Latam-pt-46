@@ -5,11 +5,10 @@ import { faArrowsTurnToDots, faX } from '@fortawesome/free-solid-svg-icons';
 const Home = () => {
 	const [currentInput, setCurrentInput] = useState("");
 	const [todo, setTodo] = useState([]);
-
+	
 	const deleteItem = (currentIndex) => {
 		setTodo(todo.filter((item, index ) => index !== currentIndex))
 	}
-
 
 	return (
 		<div className="container w-50">
@@ -39,12 +38,12 @@ const Home = () => {
 						>
 							{item}
 							<FontAwesomeIcon
-							 	onClick={()=> deleteItem(index)}
+							   	id="icon"
+							 	onClick={() => deleteItem(index)}
 								icon={faX}
 							/>
 						</li>
 					))}
-
 					<div id="counterList">{todo.length} items in the list</div>
 				</ul>
 			</div>
