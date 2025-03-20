@@ -5,9 +5,18 @@ import { faArrowsTurnToDots, faX } from '@fortawesome/free-solid-svg-icons';
 const Home = () => {
 	const [currentInput, setCurrentInput] = useState("");
 	const [todo, setTodo] = useState([]);
+
+	const handleChange = (event) => {setCurrentInput(event.target.value)}
 	
 	const deleteItem = (currentIndex) => {
 		setTodo(todo.filter((item, index ) => index !== currentIndex))
+	}
+
+	const keyPress = (event) => {
+		if (event.key === "Enter" && currentInput.trim() !== "") {
+			setTodo(([...todo, currentInput]))
+			setCurrentInput("")
+		}
 	}
 
 	return (
@@ -20,21 +29,16 @@ const Home = () => {
 							className="ps-5"
 							type="text"
 							placeholder="What needs to be done"
-							onChange={(event) => setCurrentInput(event.target.value)}
+							onChange={handleChange}
 							value={currentInput}
-							onKeyDown={(event) => {
-								if (event.key === "Enter" && currentInput.trim() !== "") {
-									setTodo(([...todo, currentInput]))
-									setCurrentInput("")
-								}
-							}}
+							onKeyDown={keyPress}
 						>
 						</input>
 					</li>
 					{todo.map((item, index) => (
 						<li
 							className="ps-5 pe-3 d-flex justify-content-between align-items-center"
-							key={index}
+							key={crypto.randomUUID()}
 						>
 							{item}
 							<FontAwesomeIcon
