@@ -6,10 +6,10 @@ const Home = () => {
 	const [currentInput, setCurrentInput] = useState("");
 	const [todo, setTodo] = useState([]);
 
-	const handleChange = (event) => {setCurrentInput(event.target.value)}
-	
+	const handleChange = (event) => { setCurrentInput(event.target.value) }
+
 	const deleteItem = (currentIndex) => {
-		setTodo(todo.filter((item, index ) => index !== currentIndex))
+		setTodo(todo.filter((item, index) => index !== currentIndex))
 	}
 
 	const keyPress = (event) => {
@@ -19,22 +19,32 @@ const Home = () => {
 		}
 	}
 
+
+
+
 	return (
 		<div className="container w-50">
 			<div id="row" className="row d-flex jutify-content-center ">
-				<h2 className="d-flex justify-content-center" >TODOS</h2>
+				<h2 className="d-flex justify-content-center" >TARE LIST</h2>
 				<ul className="d-flex flex-column justify-content-center">
 					<li>
 						<input
 							className="ps-5"
 							type="text"
-							placeholder="What needs to be done"
+							id="myInput"
+							placeholder="what needs to be done?"
 							onChange={handleChange}
 							value={currentInput}
 							onKeyDown={keyPress}
 						>
 						</input>
 					</li>
+
+					{todo.length === 0  
+					? <li id="firstHomework" className="ps-5">Add your first homework</li>
+					: null
+					}
+
 					{todo.map((item, index) => (
 						<li
 							className="ps-5 pe-3 d-flex justify-content-between align-items-center"
@@ -42,8 +52,8 @@ const Home = () => {
 						>
 							{item}
 							<FontAwesomeIcon
-							   	id="icon"
-							 	onClick={() => deleteItem(index)}
+								id="icon"
+								onClick={() => deleteItem(index)}
 								icon={faX}
 							/>
 						</li>

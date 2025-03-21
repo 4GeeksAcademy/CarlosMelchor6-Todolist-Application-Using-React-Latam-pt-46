@@ -11,6 +11,7 @@ input  {
     border: none;
     width: 100%;
     color: rgb(124, 121, 121);
+    background: rgb(233, 233, 233);
 }
 
 li {
@@ -23,7 +24,7 @@ li {
 #counterList {
     font-size: 20px;
     border: 1px solid rgb(196, 193, 193);
-    color: rgb(124, 121, 121);
+    color: rgb(121, 121, 121);
     padding-left: 20px;
 }
 
@@ -32,6 +33,10 @@ li {
 }
 
 li:hover #icon {
-    color: rgb(124, 121, 121);
+    color:  rgb(124, 121, 121);
+    cursor: pointer;
 }
 
+#firstHomework {
+    color: rgb(124, 121, 121);
+}
