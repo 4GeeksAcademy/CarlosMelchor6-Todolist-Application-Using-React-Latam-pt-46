@@ -18,9 +18,9 @@ const Home = () => {
 			setCurrentInput("")
 		}
 	}
-
-
-
+	const addFirstHomework = todo.length === 0
+			? <li id="firstHomework" className="ps-5">Add your first homework</li>
+			: null;
 
 	return (
 		<div className="container w-50">
@@ -39,11 +39,8 @@ const Home = () => {
 						>
 						</input>
 					</li>
-
-					{todo.length === 0  
-					? <li id="firstHomework" className="ps-5">Add your first homework</li>
-					: null
-					}
+					
+					{addFirstHomework}
 
 					{todo.map((item, index) => (
 						<li
